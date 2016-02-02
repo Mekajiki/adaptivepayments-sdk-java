@@ -568,7 +568,7 @@ public class AdaptivePaymentsService extends BaseService {
 	 public PayResponse pay(PayRequest payRequest, ICredential credential) throws SSLConfigurationException, InvalidCredentialException, UnsupportedEncodingException, IOException, HttpErrorException, InvalidResponseDataException, ClientActionRequiredException, MissingCredentialException, InterruptedException, OAuthException {
 		APICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(payRequest.toNVPString(), SERVICE_NAME, "Pay", credential, SDK_NAME, SDK_VERSION, "AdaptivePayments", this.configurationMap);
 	 	String response = call(apiCallPreHandler);
-		return PayResponse.createInstance(NVPUtil.decode(response), "", -1);
+		return PayResponse.createInstance(NVPUtil.decode(response), "", -1, response);
 	}
 	
 	/**	
@@ -587,7 +587,7 @@ public class AdaptivePaymentsService extends BaseService {
 	 public PayResponse pay(PayRequest payRequest, String apiUsername) throws SSLConfigurationException, InvalidCredentialException, UnsupportedEncodingException, IOException, HttpErrorException, InvalidResponseDataException, ClientActionRequiredException, MissingCredentialException, InterruptedException, OAuthException {
 		APICallPreHandler apiCallPreHandler = new PlatformAPICallPreHandler(payRequest.toNVPString(), SERVICE_NAME, "Pay", apiUsername, getAccessToken(), getTokenSecret(), SDK_NAME, SDK_VERSION, "AdaptivePayments", this.configurationMap);
 	 	String response = call(apiCallPreHandler);
-		return PayResponse.createInstance(NVPUtil.decode(response), "", -1);
+		return PayResponse.createInstance(NVPUtil.decode(response), "", -1, response);
 	 }
 
 	/** 

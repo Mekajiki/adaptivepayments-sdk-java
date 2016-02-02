@@ -67,7 +67,10 @@ public class PayResponse{
 	 */ 
 	private List<ErrorData> error = new ArrayList<ErrorData>();
 
-	
+	/**
+	 *
+	 */
+	private String originalResponse;
 
 	/**
 	 * Default Constructor
@@ -200,11 +203,18 @@ public class PayResponse{
 	 public void setError(List<ErrorData> error) {
 	 	this.error = error;
 	 }
-	 
 
+	/**
+	 * Getter for originalResponse
+     */
+	 public String getOriginalResponse() { return originalResponse; }
 
-	
-	public static PayResponse createInstance(Map<String, String> map, String prefix, int index) {
+	/**
+	 * Setter for originalResponse
+	 */
+	 public void setOriginalResponse(String originalResponse) { this.originalResponse = originalResponse; }
+
+	public static PayResponse createInstance(Map<String, String> map, String prefix, int index, String originalResponse) {
 		PayResponse payResponse = null;
 		int i = 0;
 		if (index != -1) {
@@ -266,7 +276,9 @@ public class PayResponse{
 				break;
 			}
 		}
+
+		payResponse.setOriginalResponse(originalResponse);
+
 		return payResponse;
 	}
- 
 }
